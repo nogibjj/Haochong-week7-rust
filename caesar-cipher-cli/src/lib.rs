@@ -23,7 +23,7 @@ pub fn decrypt(text: &str, shift: u8) -> String {
     encrypt(text, 26 - shift)
 }
 
-pub fn int_to_ascii(value: u8) -> Result<char, &'static str>  {
+pub fn int_to_ascii(value: u8) -> Result<char, &'static str> {
     if value <= 127 {
         Ok(value as char)
     } else {

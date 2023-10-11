@@ -10,10 +10,8 @@ cargo run --  --message "Ypp dy dro lexuob. Ofobi zobcyx pyb drowcovfoc" --decry
 
 */
 
-
 use caeser_cipher_cli::{decrypt, encrypt, int_to_ascii};
 use clap::Parser;
-use std::env;
 
 /// CLI tool to encrypt and decrypt messages using the caeser cipher
 #[derive(Parser, Debug)]
@@ -54,7 +52,10 @@ fn main() {
         if let Ok(integer_value) = args.message.parse::<u8>() {
             match int_to_ascii(integer_value) {
                 Ok(ascii_char) => {
-                    println!("Integer: {} corresponds to ASCII character: {}", integer_value, ascii_char);
+                    println!(
+                        "Integer: {} corresponds to ASCII character: {}",
+                        integer_value, ascii_char
+                    );
                 }
                 Err(err) => {
                     eprintln!("Error: {}", err);
@@ -68,8 +69,6 @@ fn main() {
     }
 }
 
-
-
 // run it
 // fn main() {
 //     let args = Args::parse();
@@ -80,5 +79,5 @@ fn main() {
 //     } else {
 //         println!("Please specify either --encrypt or --decrypt");
 //     }
-        
+
 // }
