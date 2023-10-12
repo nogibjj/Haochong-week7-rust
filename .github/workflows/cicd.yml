@@ -13,17 +13,11 @@ jobs:
       - name: Set up Rust
         uses: actions/checkout@v2
         with:
-          toolchain: stable
-
-      - name: List contents before directory change
-        run: ls -al
+          repository: Haochong-week7-rust-data-engineering
+          path: caesar-cipher-cli  # Specify the subdirectory
 
       - name: Change to caesar-cipher-cli directory
         run: cd caesar-cipher-cli
-
-      - name: List contents after directory change
-        run: ls -al
-
 
       - name: Build and Test
         run: |
