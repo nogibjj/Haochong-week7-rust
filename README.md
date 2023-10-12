@@ -3,56 +3,18 @@
 
 [![Clippy](https://github.com/nogibjj/Haochong-week7-rust-data-engineering/actions/workflows/lint.yml/badge.svg)](https://github.com/nogibjj/Haochong-week7-rust-data-engineering/actions/workflows/lint.yml)
 
-This is a repo template for course 706_Data_Engineering Week 6 Mini Project. Since we need to perform join this week, I need to find two new datasets that fit this project. In this case, I found two datsets about the prediction of the world cup. First of all, I define functions called `extract` to get data from url. Then, use `load` to connect Databricks database. After that, I create afunction called `complex_query` to fulfill our requirement. Consequently, I use `main.py` to use my function in `lib.py`, and use the output of `main.py` and `test_main.py` to test my `main.py`. And also, I create a function called `query_record` to save my query history. Finally, I use Action to run `Makefile` and got a 100% pass. 
+This is a repo template for course 706_Data_Engineering Week 7 Mini Project. I choose to finish the Rust lab, so my requirement is little different. First of all, I selected the folder `caesar-cipher-cli`. Then, I read and run the code in `lib.rs` and `main.rs` to learn what the code is doing and how it makes things happen. After that, I came up with an idea to create my own function, `int_to_ascii`, which can transfer a number to the correspond character according to ASCII table as one more processing logic. To fulfill the other requirement, I also add a new command line argument `int_to_ascii` to fit my new function and add function `read_input` to accept file format with `.txt` file, and change the format of the output to make more sense. I also create `test.rs` to test the functions provided by professor and my own function. Finally, I use Action to run `Makefile` provided by professor and got a 100% pass. 
 
 Important file:
 * `Makefile`
 * `cicd.yml`
-* `lib.py`
-* `main.py`
-* `.env`(which is hidden)
-* `query_record.md`
-* `dataset`
-* `test_main.py`
+* `lib.rs`
+* `main.rs`
+* `test.rs`
+* `test.txt`
+* `Cargo.toml`
 
 # Purpose
-- Connect to a SQL Databricks database
-- Design a complex SQL query involving joins, aggregation, and sorting
-- Provide an explanation for what the query is doing and the expected results
-
-## Preparation 
-1. Open codespaces and vscode
-2. Wait for container to be built with requiremnts.txt installed
-
-## Set up for Databricks
-After logging in Azure Education, I create a Azure Databricks. After launching the 
-workspace, I got a database called "default". Then I found the information I need: server hostname, http path and my token. I put them in `.env` and use those three variables in my `load` function to build connection with Databricks. In addition, I also put those three variables in the `Action` under the `Secrets and variables` in the `Setting` of the repo. I create two table in the database. 
-
-![Alt text](<截屏2023-10-08 上午12.33.57.png>)
-
-## Check format and test errors
-1. Format code with Python black by using `make format`
-
-2. Lint code with Ruff by using `make lint`. 
-
-3. Test code by using `make test`
-
-In this project, I got the first failure while import my csv file. Panda can't read it. After checking the error message and my csv file, I found out that it's not raw. After putting `?raw=True` after the url, I fix this problem. 
-
-![Alt text](<截屏2023-10-07 下午3.06.14.png>)
-
-I didn't meet too many trouble for other parts. I write test in `test_main.py` for three functions, and I got them all pass:.
-
-![Alt text](<截屏2023-10-07 下午3.23.45.png>)
-
-### Query and result(you can also see in query_record):
-
-### Lab:  Modifying a Rust Command-Line Tool
-
-In this lab you will gain experience extending an existing Rust project by forking and modifying a simple command-line tool.
-
-**Steps**
-
 1. Fork the repository at **https://github.com/nogibjj/rust-data-engineering**
 
 2. Clone your forked repository 
@@ -76,31 +38,155 @@ In this lab you will gain experience extending an existing Rust project by forki
 7. Commit your changes and push to your forked repository
 
 
-**Deliverable**
+## Preparation 
+1. Open codespaces and vscode
+2. Open github and find professor's repo. Then, fork it and clone it to local
 
-Submit a link to your forked repository showing the code changes.
+# Guide for using my tool
+1. Fiset, set up for Rust. Install Rust and Cargo
+
+Use this command to install them: 
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+After that, I restart the shell by using 
+```
+source $HOME/.cargo/env
+```
+
+Then, I check the version to confirm that they are installed successfully by using
+```
+rustc --version
+cargo --version
+```
+
+If you get a version, then you install correctly. I got this:
+
+![Alt text](<截屏2023-10-11 下午9.25.04.png>)
+
+2. Make sure we have `Cargo.toml` under the project folder, and run 
+```
+cargo build
+```
+```
+cargo run
+```
+
+3. You can do three things with my tool: encrypt a string, decrypt a string, and transfer a int value to a correspond character in ASCII table.
+
+* To encrypt:
+```
+cargo run --  --message "your string" --encrypt --shift "your shift value"
+```
 
 
-**Goals**
+* To decrypt:
+```
+cargo run --  --message "your string" --decrypt --shift "your shift value"
+```
 
-This hands-on lab provides experience with:
+* To transfer a int value to a correspond character in ASCII table, replace "int" with your number:
+```
+cargo run -- --int-to-ascii --message int
+``` 
 
-- Forking and cloning a Rust project
+* To use file format input, change the content after message to the `.txt` file name:
+```
+cargo run -- --encrypt --message test.txt --shift 3
+```
 
-- Modifying existing Rust code 
+cargo run -- --int-to-ascii --message test.txt
 
-- Running `cargo build` and `cargo run`
+* For mroe information, run:
+```
+cargo run -- --help
+```
 
-- Version control with git
+## Check format and test errors
+1. Format code with Python black by using `make format`
 
-- Making a pull request (optional)
+2. Lint code with Ruff by using `make lint`. 
 
+3. Test code by using `make test`
 
-### Technical Notes
+I create two tests in the `test.rs`, one to test both `encrypt` and `decrypt`, the other one to test my `int_to_ascii`. I got them all passed.
+
+![Alt text](<截屏2023-10-12 上午12.10.50.png>)
+
+Other kinds of validation of my tool can be varified by output, here are some examples.
+
+* Examples:
+- I updated the output format for those two functions that provided by professor:
+Running 
+```
+cargo run --  --message "Off to the bunker. Every person for themselves" --encrypt --shift 10
+```
+I got: 
+```
+Encrypted message: Ypp dy dro lexuob. Ofobi zobcyx pyb drowcovfoc
+```
+
+Running 
+```
+cargo run --  --message "Ypp dy dro lexuob. Ofobi zobcyx pyb drowcovfoc" --decrypt --shift 10
+```
+I got: 
+```
+Decrypted message: Off to the bunker. Every person for themselves
+```
+
+- For my own function
+Running 
+```
+cargo run -- --int-to-ascii --message 65
+```
+I got: 
+```
+Integer: 65 corresponds to ASCII character: A
+```
+
+Running 
+```
+cargo run -- --int-to-ascii --message 140
+```
+I got: 
+```
+Error: Input not valid! Should be less than or equal to 127.
+```
+
+- For file format input, with "Off to the bunker. Every person for themselves" inside the test.txt:
+Running 
+```
+cargo run -- --encrypt --message test.txt --shift 10
+```
+I got: 
+```
+Encrypted message: Ypp dy dro lexuob. Ofobi zobcyx pyb drowcovfoc
+```
+
+Running 
+```
+cargo run -- --int-to-ascii --message test.txt
+```
+Since the content is not number, I got: 
+```
+Error: Invalid integer value provided.
+```
+
+- If you run the code without specifing function name, you will get a reminder:
+Running 
+```
+cargo run -- --message 65 
+```
+I got: 
+```
+Please specify either --encrypt, --decrypt, or --int-to-ascii
+```
 
 ## Makefile
 
-Each subdirectory project uses this style to make it easy to test and run
+I have a makefile under folder `Haochong-week7-rust-data-engineering`. Besides, under `caesar-cipher-cli`, there is also a makefile useing this style to make it easy to test and run
 
 ```
 format:
@@ -117,8 +203,6 @@ run:
 
 all: format lint test run
 ```
-
-
 ## References
 
 * [Rust Collections](https://doc.rust-lang.org/std/collections/index.html)
