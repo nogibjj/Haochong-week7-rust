@@ -13,7 +13,7 @@ jobs:
       - name: Set up Rust
         uses: actions/checkout@v2
         with:
-          repository: Haochong-week7-rust-data-engineering
+          repository: nogibjj/Haochong-week7-rust-data-engineering
           path: caesar-cipher-cli  # Specify the subdirectory
 
       - name: Change to caesar-cipher-cli directory
