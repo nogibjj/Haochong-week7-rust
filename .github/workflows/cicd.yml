@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main  # Change to your main branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Rust
+        uses: actions/setup-rust@v1
+        with:
+          toolchain: stable
+
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Build and Test
+        run: |
+          cargo build --verbose
+          cargo test --verbose
+
+      - name: Deploy
+        run: make deploy
