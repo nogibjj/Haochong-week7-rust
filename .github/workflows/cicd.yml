@@ -15,6 +15,9 @@ jobs:
         with:
           toolchain: stable
 
+      - name: Change to caesar-cipher-cli directory
+        run: cd caesar-cipher-cli
+
       - name: Build and Test
         run: |
           cargo build --verbose
