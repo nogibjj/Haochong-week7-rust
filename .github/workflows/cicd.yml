@@ -15,8 +15,15 @@ jobs:
         with:
           toolchain: stable
 
+      - name: List contents before directory change
+        run: ls -al
+
       - name: Change to caesar-cipher-cli directory
         run: cd caesar-cipher-cli
+
+      - name: List contents after directory change
+        run: ls -al
+
 
       - name: Build and Test
         run: |
