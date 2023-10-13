@@ -7,7 +7,6 @@ This is a repo template for course 706_Data_Engineering Week 7 Mini Project. I c
 
 Important file:
 * `Makefile`
-* `cicd.yml`
 * `lib.rs`
 * `main.rs`
 * `test.rs`
