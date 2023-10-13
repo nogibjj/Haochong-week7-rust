@@ -13,7 +13,8 @@ jobs:
       - name: Set up Rust
         uses: actions/checkout@v3
         with:
-          repository: nogibjj/Haochong-week7-rust-data-engineering
+          repository: nogibjj/Haochong-week7-rust
+          path: caesar-cipher-cli
 
       - name: Build and Test
         run: |
