@@ -96,7 +96,9 @@ cargo run -- --int-to-ascii --message int
 cargo run -- --encrypt --message test.txt --shift 3
 ```
 
+```
 cargo run -- --int-to-ascii --message test.txt
+```
 
 * For mroe information, run:
 ```
@@ -104,9 +106,9 @@ cargo run -- --help
 ```
 
 ## Check format and test errors
-1. Format code with Python black by using `make format`
+1. Format code  by using `make format`
 
-2. Lint code with Ruff by using `make lint`. 
+2. Lint code  by using `make lint`. 
 
 3. Test code by using `make test`
 
@@ -117,76 +119,80 @@ I create two tests in the `test.rs`, one to test both `encrypt` and `decrypt`, t
 Other kinds of validation of my tool can be varified by output, here are some examples.
 
 * Examples:
-- I updated the output format for those two functions that provided by professor:
-Running 
-```
-cargo run --  --message "Off to the bunker. Every person for themselves" --encrypt --shift 10
-```
-I got: 
-```
-Encrypted message: Ypp dy dro lexuob. Ofobi zobcyx pyb drowcovfoc
-```
+   - I updated the output format for those two functions that provided by professor:
 
-Running 
-```
-cargo run --  --message "Ypp dy dro lexuob. Ofobi zobcyx pyb drowcovfoc" --decrypt --shift 10
-```
-I got: 
-```
-Decrypted message: Off to the bunker. Every person for themselves
-```
+   Running 
+   ```
+   cargo run --  --message "Off to the bunker. Every person for themselves" --encrypt --shift 10
+   ```
+   I got: 
+   ```
+   Encrypted message: Ypp dy dro lexuob. Ofobi zobcyx pyb drowcovfoc
+   ```
 
-- For my own function
-Running 
-```
-cargo run -- --int-to-ascii --message 65
-```
-I got: 
-```
-Integer: 65 corresponds to ASCII character: A
-```
+   Running 
+   ```
+   cargo run --  --message "Ypp dy dro lexuob. Ofobi zobcyx pyb drowcovfoc" --decrypt --shift 10
+   ```
+   I got: 
+   ```
+   Decrypted message: Off to the bunker. Every person for themselves
+   ```
 
-Running 
-```
-cargo run -- --int-to-ascii --message 140
-```
-I got: 
-```
-Error: Input not valid! Should be less than or equal to 127.
-```
+   - For my own function:
 
-- For file format input, with "Off to the bunker. Every person for themselves" inside the test.txt:
-Running 
-```
-cargo run -- --encrypt --message test.txt --shift 10
-```
-I got: 
-```
-Encrypted message: Ypp dy dro lexuob. Ofobi zobcyx pyb drowcovfoc
-```
+   Running 
+   ```
+   cargo run -- --int-to-ascii --message 65
+   ```
+   I got: 
+   ```
+   Integer: 65 corresponds to ASCII character: A
+   ```
 
-Running 
-```
-cargo run -- --int-to-ascii --message test.txt
-```
-Since the content is not number, I got: 
-```
-Error: Invalid integer value provided.
-```
+   Running 
+   ```
+   cargo run -- --int-to-ascii --message 140
+   ```
+      I got: 
+   ```
+   Error: Input not valid! Should be less than or equal to 127.
+   ```
 
-- If you run the code without specifing function name, you will get a reminder:
-Running 
-```
-cargo run -- --message 65 
-```
-I got: 
-```
-Please specify either --encrypt, --decrypt, or --int-to-ascii
-```
+   - For file format input, with "Off to the bunker. Every person for themselves" inside the test.txt:
+
+   Running 
+   ```
+   cargo run -- --encrypt --message test.txt --shift 10
+   ```
+   I got: 
+   ```
+   Encrypted message: Ypp dy dro lexuob. Ofobi zobcyx pyb drowcovfoc
+   ```
+
+   Running 
+   ```
+   cargo run -- --int-to-ascii --message test.txt
+   ```
+   Since the content is not number, I got: 
+   ```
+   Error: Invalid integer value provided.
+   ```
+
+   - If you run the code without specifing function name, you will get a reminder:
+
+   Running 
+   ```
+   cargo run -- --message 65 
+   ```
+   I got: 
+   ```
+   Please specify either --encrypt, --decrypt, or --int-to-ascii
+   ```
 
 ## Makefile
 
-I have a makefile under folder `Haochong-week7-rust-data-engineering`. Besides, under `caesar-cipher-cli`, there is also a makefile useing this style to make it easy to test and run
+I have a makefile under folder `Haochong-week7-rust`. Besides, under `caesar-cipher-cli`, there is also a makefile useing this style to make it easy to test and run
 
 ```
 format:
