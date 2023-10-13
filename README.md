@@ -1,9 +1,9 @@
-# Haochong-week6-mini-repo
+# Haochong-week7-mini-repo
 [![Tests](https://github.com/nogibjj/Haochong-week7-rust-data-engineering/actions/workflows/tests.yml/badge.svg)](https://github.com/nogibjj/Haochong-week7-rust-data-engineering/actions/workflows/tests.yml)
 
 [![Clippy](https://github.com/nogibjj/Haochong-week7-rust-data-engineering/actions/workflows/lint.yml/badge.svg)](https://github.com/nogibjj/Haochong-week7-rust-data-engineering/actions/workflows/lint.yml)
 
-This is a repo template for course 706_Data_Engineering Week 7 Mini Project. I choose to finish the Rust lab, so my requirement is little different. First of all, I selected the folder `caesar-cipher-cli`. Then, I read and run the code in `lib.rs` and `main.rs` to learn what the code is doing and how it makes things happen. After that, I came up with an idea to create my own function, `int_to_ascii`, which can transfer a number to the correspond character according to ASCII table as one more processing logic. To fulfill the other requirement, I also add a new command line argument `int_to_ascii` to fit my new function and add function `read_input` to accept file format with `.txt` file, and change the format of the output to make more sense. I also create `test.rs` to test the functions provided by professor and my own function. Finally, I use Action to run `Makefile` provided by professor and got a 100% pass. 
+This is a repo template for course 706_Data_Engineering Week 7 Mini Project. I choose to finish the Rust lab, so my requirement is little different. First of all, I selected the folder `caesar-cipher-cli`. Then, I read and run the code in `lib.rs` and `main.rs` to learn what the code is doing and how it makes things happen. After that, I came up with an idea to create my own function, `int_to_ascii`, which can transfer a number to the correspond character according to ASCII table as one more processing logic. To fulfill the other requirement, I also add a new command line argument `int_to_ascii` to fit my new function and add function `read_input` to accept file format input with `.txt` file, and change the format of the output to make more sense. I also create `test.rs` to test the functions provided by professor and my own function. Finally, I use Action to run `Makefile` provided by professor and got a 100% pass. 
 
 Important file:
 * `Makefile`
@@ -14,7 +14,7 @@ Important file:
 * `test.txt`
 * `Cargo.toml`
 
-# Purpose
+## Purpose
 1. Fork the repository at **https://github.com/nogibjj/rust-data-engineering**
 
 2. Clone your forked repository 
@@ -42,7 +42,7 @@ Important file:
 1. Open codespaces and vscode
 2. Open github and find professor's repo. Then, fork it and clone it to local
 
-# Guide for using my tool
+## Guide for using my tool
 1. Fiset, set up for Rust. Install Rust and Cargo
 
 Use this command to install them: 
