@@ -12,9 +12,9 @@ jobs:
     steps:
       - name: Set up Rust
         uses: actions/checkout@v3
-        with:
-          repository: nogibjj/Haochong-week7-rust
-          path: caesar-cipher-cli
+      
+      - name: install packages
+        run: make install
 
       - name: Build and Test
         run: |
