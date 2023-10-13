@@ -99,7 +99,7 @@ cargo run -- --encrypt --message test.txt --shift 3
 cargo run -- --int-to-ascii --message test.txt
 ```
 
-* For mroe information, run:
+* For more information, run:
 ```
 cargo run -- --help
 ```
@@ -133,6 +133,7 @@ Other kinds of validation of my tool can be varified by output, here are some ex
    ```
    cargo run --  --message "Ypp dy dro lexuob. Ofobi zobcyx pyb drowcovfoc" --decrypt --shift 10
    ```
+
    I got: 
    ```
    Decrypted message: Off to the bunker. Every person for themselves
@@ -153,7 +154,8 @@ Other kinds of validation of my tool can be varified by output, here are some ex
    ```
    cargo run -- --int-to-ascii --message 140
    ```
-      I got: 
+
+   I got: 
    ```
    Error: Input not valid! Should be less than or equal to 127.
    ```
